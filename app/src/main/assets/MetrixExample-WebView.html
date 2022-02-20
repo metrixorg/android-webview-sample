@@ -32,6 +32,14 @@
                 alert('UserId:\n' + userId);
             }
 
+            function sessionIdCallback(sessionId) {
+                alert('SessionId:\n' + sessionId);
+            }
+
+            function sessionNumberCallback(sessionNumber) {
+                alert('SessionNumber:\n' + sessionNumber);
+            }
+
             Metrix.setOnAttributionChangedListener(attributionCallback);
 
             Metrix.shouldLaunchDeeplink = true;
@@ -39,6 +47,8 @@
 
             Metrix.setUserIdListener(userIdCallback);
 
+            Metrix.setSessionIdListener(sessionIdCallback);
+            Metrix.setSessionNumberListener(sessionNumberCallback);
 
             Metrix.setPushToken('pushToken');
 
@@ -66,18 +76,6 @@
                         "first": "second"
                     });
                 }
-
-                var btnGetSessionId = document.getElementById('btnGetSessionId')
-                btnGetSessionId.onclick = function(e) {
-                    e.preventDefault();
-                    alert('Session Id:\n' + Metrix.getSessionId());
-                }
-
-                var btnGetSessionNum = document.getElementById('btnGetSessionNum')
-                btnGetSessionNum.onclick = function(e) {
-                    e.preventDefault();
-                    alert('Session Number:\n' + Metrix.getSessionNum());
-                }
             }
         </script>
         <div id='buttons'>
@@ -89,12 +87,6 @@
             </div>
             <div style="width:400px;height:35px;text-align:center;">
                 <button id='btnTrackCustomEvent'>Track Custom event</button>
-            </div>
-            <div style="width:400px;height:35px;text-align:center;">
-                <button id='btnGetSessionId'>Get Session Id</button>
-            </div>
-            <div style="width:400px;height:35px;text-align:center;">
-                <button id='btnGetSessionNum'>Get Session Number</button>
             </div>
         </div>
     </body>
